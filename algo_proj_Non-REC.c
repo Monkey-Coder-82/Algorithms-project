@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<time.h>
 void insertionSort(int arr[], int n){
     int key, j;
     for (int i = 1; i < n; i++){
@@ -29,7 +29,12 @@ int missingInt(int arr[], int n){
     return missing;
 }
 
-int main(){
+int main() {
+    clock_t start, end;
+    double cpu_time_used;
+
+    start = clock();
+
     int A1[] = {1, 3, 6, 4, 1, 2};
     int n = sizeof(A1) / sizeof(A1[0]);
     printf("Test 1: A = [1, 3, 6, 4, 1, 2]\n");
@@ -55,6 +60,13 @@ int main(){
     n = sizeof(A4) / sizeof(A4[0]);
     printf("Test 4: A = [0...100000]\n");
     printf("Result: %d (Expected: 5000)\n\n", missingInt(A4, n));
-     
+
+    end = clock();
+
+    // Calculate time in seconds
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+    printf("Execution time: %f seconds\n", cpu_time_used);
+
     return 0;
 }
